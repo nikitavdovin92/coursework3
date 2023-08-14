@@ -24,7 +24,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     private final TelegramBot telegramBot;
     private static final Pattern PATTERN = Pattern.compile("(\\d{1,2}.\\d{1,2}.\\d{4} \\d{1,2}:\\d{2}) ([А-яA-z\\d,\\s!?.]+)");
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("d.M.yyyy HH:mm")
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("d.M.yyyy HH:mm");
 
     public TelegramBotUpdatesListener(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
@@ -55,6 +55,8 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                     }
                 } else if (matcher.matches() && (dateTime = parse(matcher.group(1))) != null) {
                     String notification = matcher.group(2);
+                }else {
+
                 }
             }
         });
